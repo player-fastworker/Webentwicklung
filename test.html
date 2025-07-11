@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>Meine Startseite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Willkommen auf meiner Webseite!</h1>
+    <div class="content" id="content">
+        <!-- Inhalte aus JSON werden hier angezeigt -->
+    </div>
+
+    <script>
+        // Funktion, um JSON-Daten zu laden und anzuzeigen
+        fetch('test.json')
+            .then(response => response.json())
+            .then(data => {
+                const contentDiv = document.getElementById('content');
+                // Beispiel: Daten anzeigen
+                contentDiv.innerHTML = `
+                    <h2>${data.title}</h2>
+                    <p>${data.description}</p>
+                `;
+            })
+            .catch(error => {
+                console.error('Fehler beim Laden der JSON-Datei:', error);
+            });
+    </script>
+</body>
+</html>
